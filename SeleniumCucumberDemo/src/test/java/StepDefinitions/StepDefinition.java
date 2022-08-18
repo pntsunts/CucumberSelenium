@@ -1,5 +1,6 @@
 package StepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,13 +25,23 @@ public class StepDefinition {
         System.out.println("Inside enter username and password");
         webDriver.findElement(By.id("name")).sendKeys(name);
         webDriver.findElement(By.id("password")).sendKeys(password);
-    }
-
-    @Then("User clicks login button")
-    public void userClicksLoginButton() {
-        System.out.println("Inside click log in button");
         webDriver.findElement(By.id("login")).click();
     }
 
+    @And("User clicks login button")
+    public void userClicksLoginButton() {
 
+        webDriver.findElement(By.id("country")).sendKeys("South africa");
+        webDriver.findElement(By.id("address")).sendKeys("876 kgotsong Street");
+        webDriver.findElement(By.id("email")).sendKeys("peter@gmail.com");
+        webDriver.findElement(By.id("phone")).sendKeys("078 647 2252");
+        webDriver.findElement(By.id("save")).click();
+    }
+
+
+    @Then("User Logs out")
+    public void userLogsOut() {
+        webDriver.findElement(By.id("logout")).click();
+
+    }
 }
